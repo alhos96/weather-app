@@ -1,0 +1,55 @@
+.App {
+  max-width: 850px;
+  min-height: 100vh;
+  background-color: rgba(133, 210, 233, 0.5);
+  margin: auto;
+  padding: 50px 20px;
+  padding-bottom: 50px;
+
+  position: relative;
+}
+
+.weather-card {
+  max-width: 430px;
+  min-width: 400px;
+  height: 110px;
+  margin: auto;
+  margin-top: 15px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.weather-display {
+  display: flex;
+}
+.weather {
+  display: flex;
+  flex: 1;
+}
+.location {
+  flex: 1;
+  text-align: left;
+}
+
+#city-name {
+  font-weight: 600;
+  font-size: clamp(30px, 30px, 40px);
+}
+
+@media only screen and (min-width: 845px) {
+  .App {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+}
+
+@media only screen and (min-width: 845px) {
+  .App {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+}
