@@ -7,9 +7,14 @@ import AddIcon from "@mui/icons-material/Add";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
-  const [currentlyVisibleLocations, setcurrentlyVisibleLocations] = useLocalStorage("currentlyVisibleLocations", []);
+  const [currentlyVisibleLocations, setcurrentlyVisibleLocations] = useState([]);
   const [count, setCount] = useState(0);
   const [disable, setDisable] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("currentlyVisibleLocations", JSON.stringify(currentlyVisibleLocations));
+    console.log(currentlyVisibleLocations);
+  }, [currentlyVisibleLocations]);
 
   return (
     <div className="App">

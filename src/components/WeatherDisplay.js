@@ -3,8 +3,7 @@ import { Typography, Box, Button } from "@mui/material";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
 function WeatherDisplay(props) {
-  console.log(props.cvl);
-
+  console.log(props.weatherData.sys.country);
   return (
     <div className="weather-display">
       <div className="weather">
@@ -25,14 +24,14 @@ function WeatherDisplay(props) {
       </div>
       <div className="location">
         <p id="city-name">{props.weatherData.name}</p>
-        <img style={{ marginTop: "-8px" }} src={`https://www.countryflags.io/${props.weatherData.sys.country}/flat/32.png`}></img>
+        <img style={{ marginTop: "-8px" }} src={`https://flagcdn.com/w20/${props.weatherData.sys.country.toLowerCase()}.png`}></img>
         <br></br>
         <Button
           id={props.idfd}
           variant="contained"
           color="primary"
           size="small"
-          style={{ marginLeft: "100px", opacity: "0.5" }}
+          style={{ position: "absolute", right: "15px", bottom: "px", opacity: "0.5" }}
           onClick={(e) => {}}
         >
           remove
