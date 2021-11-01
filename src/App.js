@@ -3,9 +3,7 @@ import React, { useState, useEffect } from "react";
 import { WeatherCard } from "./Components";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
-import weatherApi from "./axios";
 import useLocalStorage from "./hooks/useLocalStorage";
-import Form from "./Components/Form";
 
 function App() {
   const [count, setCount] = useState(0);
