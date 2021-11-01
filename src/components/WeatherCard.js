@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import { LocationWeather } from "./index";
 import Form from "./Form";
 
-function WeatherCard(props) {
-  const [location, setLocation] = useState("");
-  const [searchTerm, setSearchTerm] = useState();
-
+function WeatherCard({ location, setLocation, setDisable, currentLocations, setCurrentLocations, id }) {
   return (
     <div className="weather-card">
+      {/* location is allways empty string when the button is clicked*/}
       {location ? (
-        <LocationWeather location={location} setLocation={setLocation} cvl={props.cvl} idfd={props.idForDelete} scvl={props.scvl} />
+        <LocationWeather
+          location={location}
+          setLocation={setLocation}
+          id={id}
+          setCurrentLocations={setCurrentLocations}
+          currentLocations={currentLocations}
+        />
       ) : (
         <Form
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
           setLocation={setLocation}
-          setDisable={props.setDisable}
-          cvl={props.cvl}
+          setDisable={setDisable}
+          setCurrentLocations={setCurrentLocations}
+          currentLocations={currentLocations}
         ></Form>
       )}
     </div>

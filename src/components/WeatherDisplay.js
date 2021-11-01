@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, Box, Button } from "@mui/material";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
 function WeatherDisplay(props) {
-  console.log(props.weatherData.sys.country);
+  const [count, setCount] = useState(0);
   return (
     <div className="weather-display">
       <div className="weather">
@@ -27,12 +27,18 @@ function WeatherDisplay(props) {
         <img style={{ marginTop: "-8px" }} src={`https://flagcdn.com/w20/${props.weatherData.sys.country.toLowerCase()}.png`}></img>
         <br></br>
         <Button
-          id={props.idfd}
+          id={props.id}
           variant="contained"
           color="primary"
           size="small"
           style={{ position: "absolute", right: "15px", bottom: "px", opacity: "0.5" }}
-          onClick={(e) => {}}
+          onClick={(e) => {
+            let city = e.target.id.toLowerCase();
+            console.log(city);
+            props.setCurrentLocations(props.currentLocations.filter((e) => e !== city));
+            setCount((e) => e + 1);
+            window.location.reload();
+          }}
         >
           remove
         </Button>

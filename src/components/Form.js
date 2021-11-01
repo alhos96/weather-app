@@ -1,18 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-function Form(props) {
+
+function Form({ setLocation, setDisable, currentLocations, setCurrentLocations }) {
+  const [searchTerm, setSearchTerm] = useState();
+
   function handleSubmit(e) {
     e.preventDefault();
-    props.setLocation(props.searchTerm);
+
+    setCurrentLocations(
+      //Because WeatherCards are rendered based on this state there was allways one extra card because "location" is allways empty string initialy when added on "add" button. This removes that string and places searchTerm on it's spot.
+      currentLocations.map((e) => {
+        if (e == "") {
+          return (e = searchTerm);
+        } else {
+          return e;
+        }
+      })
+    );
   }
 
-  // this disables button
   useEffect(() => {
-    props.setDisable(true);
+    //if Form is rendered button for adding new cards will be disabled. src(App.js)
+    setDisable(true);
 
+    //button is enabled once Form is unmounted. src(App.js)
     return () => {
-      props.setDisable(false);
+      setDisable(false);
     };
   }, []);
 
@@ -21,7 +35,7 @@ function Form(props) {
       <TextField
         sx={{ ml: 2 }}
         onChange={(e) => {
-          props.setSearchTerm(e.target.value);
+          setSearchTerm(e.target.value);
         }}
         label="Location"
         variant="standard"
