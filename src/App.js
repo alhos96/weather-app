@@ -10,7 +10,6 @@ import Form from "./Components/Form";
 function App() {
   const [count, setCount] = useState(0);
   const [disable, setDisable] = useState(false);
-
   const [location, setLocation] = useState("");
   const [currentLocations, setCurrentLocations] = useLocalStorage("currentLocations", []);
   //WeatherCards will be rendered based on city names from this state
@@ -34,8 +33,8 @@ function App() {
           } else {
             return (
               <WeatherCard
-                //in WeatherCard component initaly this will be empty string
                 key={i}
+                //in WeatherCard component initaly this will be empty string
                 location={e}
                 id={e}
                 currentLocations={currentLocations}

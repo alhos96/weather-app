@@ -27,6 +27,7 @@ function WeatherDisplay(props) {
         <img style={{ marginTop: "-8px" }} src={`https://flagcdn.com/w20/${props.weatherData.sys.country.toLowerCase()}.png`}></img>
         <br></br>
         <Button
+          //id will be search term entered by user. Whit it I will filter locations array to remove a card
           id={props.id}
           variant="contained"
           color="primary"
