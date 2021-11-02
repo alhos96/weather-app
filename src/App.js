@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { WeatherCard } from "./Components";
+import WeatherCard from "./Components/WeatherCard";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import useLocalStorage from "./hooks/useLocalStorage";

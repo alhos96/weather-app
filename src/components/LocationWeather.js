@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { WeatherDisplay } from "./index";
+import WeatherDisplay from "./WeatherDisplay";
 import CircularProgress from "@mui/material/CircularProgress";
 import weatherApi from "../axios";
 

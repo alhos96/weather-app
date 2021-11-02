@@ -1,5 +1,5 @@
 import React from "react";
-import { LocationWeather } from "./index";
+import LocationWeather from "./LocationWeather";
 import Form from "./Form";
 
 function WeatherCard({ location, setLocation, setDisable, currentLocations, setCurrentLocations, id }) {
