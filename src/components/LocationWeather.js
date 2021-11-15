@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import WeatherDisplay from "./WeatherDisplay";
-import CircularProgress from "@mui/material/CircularProgress";
+import { CircularProgress, Button } from "@mui/material";
 import weatherApi from "../axios";
 
-function LocationWeather({ location, id, setCurrentLocations, currentLocations }) {
+function LocationWeather({ location, id, setCurrentLocations, currentLocations, i }) {
+  console.log(location);
   const [weatherData, setWeatherData] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -19,14 +20,38 @@ function LocationWeather({ location, id, setCurrentLocations, currentLocations }
         });
     }
     getWeather();
-  }, []);
+  }, [currentLocations]);
 
   return (
     <div style={{ textAlign: "center" }}>
       {weatherData ? (
-        <WeatherDisplay weatherData={weatherData} id={id} setCurrentLocations={setCurrentLocations} currentLocations={currentLocations} />
+        <WeatherDisplay
+          weatherData={weatherData}
+          id={id}
+          setCurrentLocations={setCurrentLocations}
+          currentLocations={currentLocations}
+          i={i}
+        />
       ) : (
-        <p>{errorMessage}</p> || <CircularProgress sx={{ m: 2.8 }} />
+        (
+          <div className="error">
+            {" "}
+            <p>{errorMessage}</p>
+            <Button
+              id={id}
+              variant="contained"
+              color="primary"
+              size="small"
+              style={{ position: "absolute", right: "15px", bottom: "px", opacity: "0.5" }}
+              onClick={(e) => {
+                currentLocations.splice(i, 1);
+                setCurrentLocations([...currentLocations]);
+              }}
+            >
+              remove
+            </Button>
+          </div>
+        ) || <CircularProgress sx={{ m: 2.8 }} />
       )}
     </div>
   );
