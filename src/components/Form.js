@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-function Form({ setLocation, setDisable, currentLocations, setCurrentLocations }) {
+function Form({ setDisable, currentLocations, setCurrentLocations }) {
   const [searchTerm, setSearchTerm] = useState();
 
   function handleSubmit(e) {
@@ -33,6 +33,7 @@ function Form({ setLocation, setDisable, currentLocations, setCurrentLocations }
   return (
     <form noValidate autoComplete="off" onSubmit={handleSubmit}>
       <TextField
+        autoFocus
         sx={{ ml: 2 }}
         onChange={(e) => {
           setSearchTerm(e.target.value);
