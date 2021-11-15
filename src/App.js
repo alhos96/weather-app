@@ -1,31 +1,19 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import WeatherCard from "./components/WeatherCard";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [disable, setDisable] = useState(false);
   const [location, setLocation] = useState("");
   const [currentLocations, setCurrentLocations] = useLocalStorage("currentLocations", []);
-  //WeatherCards will be rendered based on city names from this state
-  const [listOfCurrentLocations, setListOfCurrentLocations] = useState([]);
-
-  //click on add button will add empty string to localStorage state. On each such occasion this state has to update so the correct number of cards is displayed
-  useEffect(() => {
-    setListOfCurrentLocations(JSON.parse(localStorage.getItem("currentLocations")));
-  }, [currentLocations]);
-
-  useEffect(() => {
-    setCount((e) => e + 1);
-  }, [currentLocations]);
 
   return (
     <div className="App">
-      {listOfCurrentLocations &&
-        listOfCurrentLocations.map((e, i) => {
+      {currentLocations &&
+        currentLocations.map((e, i) => {
           if (e == null || undefined) {
             return null;
           } else {
@@ -39,6 +27,7 @@ function App() {
                 setCurrentLocations={setCurrentLocations}
                 setLocation={setLocation}
                 setDisable={setDisable}
+                i={i}
               />
             );
           }
@@ -47,7 +36,6 @@ function App() {
       <Button
         disabled={disable}
         onClick={() => {
-          setCount((e) => e + 1);
           setCurrentLocations([...currentLocations, location]);
         }}
         variant="contained"
