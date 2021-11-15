@@ -56,3 +56,7 @@
     min-width: 360px;
   }
 }
+
+.error {
+  position: relative;
+}
